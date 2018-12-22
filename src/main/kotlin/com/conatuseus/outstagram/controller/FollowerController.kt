@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController
 class FollowerController {
     @GetMapping("/follower/add/{userId}")
     fun addFollower(@PathVariable userId: Int, @RequestParam follwerId: Int): String {
-        val redisClient = RedisClient.create("localhost").connect().sync()
+        val redisClient = RedisClient.create("redis://localhost:6379").connect().sync()
         redisClient.sadd(userId.toString(), follwerId.toString())
         return "OK"
     }
 
     @GetMapping("/follower/{userId}")
     fun getFollwerListByUserId(@PathVariable userId: Int) : String {
-        val redisClient = RedisClient.create("localhost").connect().sync()
+        val redisClient = RedisClient.create("redis://localhost:6379").connect().sync()
         return redisClient.smembers(userId.toString()).toString()
     }
 }
