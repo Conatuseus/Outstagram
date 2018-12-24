@@ -19,8 +19,6 @@ class BojController{
         val htmlDocument=response.parse()
         val getSolvedNumber=htmlDocument.select("statics > tbody > tr:nth-child(2) > td > a").text()
 
-        val redisClient = RedisClient.create("redis://localhost:6379").connect().sync()
-        redisClient.sadd(userId, getSolvedNumber)
         return getSolvedNumber.toString()
     }
 }
