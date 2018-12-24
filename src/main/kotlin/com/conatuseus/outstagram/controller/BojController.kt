@@ -17,7 +17,7 @@ class BojController{
                 .execute()
         val htmlDocument=response.parse()
 
-        val getSolvedNumber=htmlDocument.select("#statics > tbody > tr:nth-child(2) > td > a").text()
+        val getSolvedNumber=htmlDocument.select("statics > tbody > tr:nth-child(2) > td > a").text()
         return getSolvedNumber.toString()
     }
 }
