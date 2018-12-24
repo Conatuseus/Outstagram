@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 class BojController{
     @GetMapping("/BOJ/{userId}")
     fun getProblemNumber(@PathVariable userId:String):String{
-        var URL= "https://www.acmicpc.net/user/$userId"
+        val URL= "https://www.acmicpc.net/user/$userId"
         val response= Jsoup.connect(URL)
                 .method(Connection.Method.GET)
                 .execute()
