@@ -16,6 +16,7 @@ class FollowerController {
         return "OK"
     }
 
+
     @GetMapping("/follower/{userId}")
     fun getFollowerListByUserId(@PathVariable userId: Int) : String {
         val redisClient = RedisClient.create("redis://localhost:6379").connect().sync()
