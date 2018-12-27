@@ -1,6 +1,5 @@
 package com.conatuseus.outstagram.controller
 
-import com.conatuseus.outstagram.model.FollowerList
 import io.lettuce.core.RedisClient
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
