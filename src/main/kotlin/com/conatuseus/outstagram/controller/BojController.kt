@@ -13,15 +13,17 @@ class BojController{
     @GetMapping("/BOJ/add/{userId}")
     fun addUser(@PathVariable userId:String,@RequestParam addId:String):String{
         val redisClient=RedisClient.create("redis://localhost:6379").connect().sync()
+        if(!redisClient.get(userId).contains(userId)){
+            redisClient.zaddincr(userId,getSolvedNumber(userId).toDouble(),userId)
+        }
         redisClient.zaddincr(userId,getSolvedNumber(addId).toDouble(),addId)
-
         return "Success"
     }
     @GetMapping("/BOJ/list/{userId}")
     fun getList(@PathVariable userId:String):String{
         val redisClient=RedisClient.create("redis://localhost:6379").connect().sync()
         var ret=""
-        redisClient.zrangeWithScores(userId,0,10000).forEach { ret+="[${it.value} : ${it.score}]   " }
+        redisClient.zrangeWithScores(userId,0,10000).forEach { ret+="[${it.value} : ${it.score.toInt()}]   " }
         return ret
     }
 
