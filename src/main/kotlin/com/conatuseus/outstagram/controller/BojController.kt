@@ -15,14 +15,13 @@ class BojController{
     @GetMapping("/BOJ/add/{userId}")
     fun addUser(@PathVariable userId:String,@PathVariable addId:String):String{
         val redisClient=RedisClient.create("http://localhost:6379").connect().sync()
-        redisClient.hmset(userId, mapOf(Pair(addId,getSolvedNumber(addId))))
-
+        redisClient.zaddincr(userId,getSolvedNumber(addId).toDouble(),addId)
         return "Success"
     }
     @GetMapping("/BOJ/list/{userId}")
     fun getList(@PathVariable userId:String):String{
         val redisClient=RedisClient.create("http://localhost:6379").connect().sync()
-        return redisClient.get(userId)
+        return redisClient.smembers(userId).toString()
     }
 
     @GetMapping("/BOJ/{userId}")
