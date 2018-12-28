@@ -12,8 +12,9 @@ import javax.net.ssl.SSLContext
 class BojController{
     @GetMapping("/BOJ/add/{userId}")
     fun addUser(@PathVariable userId:String,@RequestParam addId:String):String{
-        val redisClient=RedisClient.create("redis://localhost:6379").connect().sync()    // 여기서 오류나는듯
+        val redisClient=RedisClient.create("redis://localhost:6379").connect().sync()
         redisClient.zaddincr(userId,getSolvedNumber(addId).toDouble(),addId)
+
         return "Success"
     }
     @GetMapping("/BOJ/list/{userId}")
@@ -35,5 +36,11 @@ class BojController{
         val getSolvedNumber=htmlDocument.select("#statics > tbody > tr:nth-child(2) > td > a").text()
 
         return getSolvedNumber.toString()
+    }
+    @GetMapping("/reset")
+    fun reset():String{
+        val redisClient=RedisClient.create("redis://localhost:6379").connect().sync()
+        redisClient.flushall()
+        return "success!"
     }
 }
