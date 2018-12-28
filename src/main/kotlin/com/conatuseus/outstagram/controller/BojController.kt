@@ -20,7 +20,8 @@ class BojController{
     @GetMapping("/BOJ/list/{userId}")
     fun getList(@PathVariable userId:String):String{
         val redisClient=RedisClient.create("redis://localhost:6379").connect().sync()
-        return redisClient.smembers(userId).toString()
+        val ret=""
+        return redisClient.zrange(userId,0,10000).toString()
     }
 
     @GetMapping("/BOJ/{userId}")
