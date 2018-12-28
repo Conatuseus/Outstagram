@@ -14,6 +14,10 @@ import javax.net.ssl.SSLContext
 class BojController{
     @GetMapping("/BOJ/add/{userId}")
     fun addUser(@PathVariable userId:String,@PathVariable addId:String):String{
+        val sc = SSLContext.getInstance("SSL")
+        sc.init(null, null, java.security.SecureRandom())
+        HttpsURLConnection.setDefaultSSLSocketFactory(sc.socketFactory)
+
         val redisClient=RedisClient.create("http://localhost:6379").connect().sync()
         redisClient.zaddincr(userId,getSolvedNumber(addId).toDouble(),addId)
         return "Success"
