@@ -13,9 +13,6 @@ class BojController{
     @GetMapping("/BOJ/add/{userId}")
     fun addUser(@PathVariable userId:String,@RequestParam addId:String):String{
         val redisClient=RedisClient.create("redis://localhost:6379").connect().sync()
-        if(!redisClient.get(userId).contains(userId)){
-            redisClient.zaddincr(userId,getSolvedNumber(userId).toDouble(),userId)
-        }
         redisClient.zaddincr(userId,getSolvedNumber(addId).toDouble(),addId)
         return "Success"
     }

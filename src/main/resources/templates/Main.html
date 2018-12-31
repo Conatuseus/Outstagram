@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find ur betrayer!</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/jquery-1.9.0.js"></script>
+    <script>
+        $("#OauthClick").click(function () {
+            window.open("https://www.instagram.com/oauth/authorize/?client_id=04033827770a48e0a5549622d20dd8c1&redirect_uri=http://133.186.151.117:8080/instagram&response_type=token&scope=likes+comments+relationships+basic")
+        })
+    </script>
+</head>
+<body>
+    <button type="button" id="OauthClick" name="OauthClick">권한 받기</button>
+</body>
+</html>
