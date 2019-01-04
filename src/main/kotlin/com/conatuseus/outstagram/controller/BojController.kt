@@ -1,21 +1,29 @@
 package com.conatuseus.outstagram.controller
 
-
+import com.conatuseus.outstagram.services.BojService
 import io.lettuce.core.RedisClient
+import io.lettuce.core.api.StatefulRedisConnection
+import org.graalvm.compiler.lir.CompositeValue
 import org.jsoup.Connection
 import org.jsoup.Jsoup
+import org.springframework.context.annotation.Bean
+
 import org.springframework.web.bind.annotation.*
+
 import javax.net.ssl.HttpsURLConnection
 import javax.net.ssl.SSLContext
 
+
 @RestController
-class BojController{
+class BojController(val redisClient: StatefulRedisConnection<String,String>){
+
     @GetMapping("/BOJ/add/{userId}")
     fun addUser(@PathVariable userId:String,@RequestParam addId:String):String{
-        val redisClient=RedisClient.create("redis://localhost:6379").connect().sync()
-        redisClient.zaddincr(userId,getSolvedNumber(addId).toDouble(),addId)
-        return "Success"
+//        val redisClient=RedisClient.create("redis://localhost:6379").connect().sync()
+//        redisClient.zaddincr(userId,getSolvedNumber(addId).toDouble(),addId)
+        return BojService.addUser(userId,addId)
     }
+
     @GetMapping("/BOJ/list/{userId}")
     fun getList(@PathVariable userId:String):String{
         val redisClient=RedisClient.create("redis://localhost:6379").connect().sync()
