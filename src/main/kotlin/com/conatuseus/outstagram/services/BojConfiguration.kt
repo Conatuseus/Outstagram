@@ -9,8 +9,10 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class BojConfiguration{
-    val redisClient=RedisClient.create("redis://localhost:6379").connect()
+    @Bean("BojRedis")
+    fun redis()=RedisClient.create("redis://localhost:6379").connect()
+
     @Bean("BojController")
-    fun bojController()=BojController(redisClient)
+    fun bojController()=BojController(redis())
 
 }
