@@ -20,4 +20,3 @@
 # --미완성 --
 # I find ur betrayer
 # Instagram의 언팔한사람 찾기.
-# API 주세요...
