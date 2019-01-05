@@ -14,7 +14,7 @@ class BojConfiguration{
     fun redis()=RedisClient.create("redis://localhost:6379").connect()
 
     @Bean("bojController")
-    fun bojController()=BojController(redis())
+    fun bojController()=BojController(redis(),bojService())
 
     @Bean("bojService")
     fun bojService()=BojService(redis())

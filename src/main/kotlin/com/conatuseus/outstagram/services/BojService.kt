@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 import javax.net.ssl.HttpsURLConnection
 import javax.net.ssl.SSLContext
 
-@Service
+@Service("bojService")
 class BojService(@Autowired val redis:StatefulRedisConnection<String,String>){
 
     fun addUserService(userId:String,addId:String):String{
