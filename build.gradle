@@ -46,6 +46,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
 
+    
     compile group: 'org.jsoup', name: 'jsoup', version: '1.10.2'
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('com.fasterxml.jackson.module:jackson-module-kotlin')

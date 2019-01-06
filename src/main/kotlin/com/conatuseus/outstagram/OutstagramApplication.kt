@@ -9,4 +9,3 @@ class OutstagramApplication
 fun main(args: Array<String>) {
     runApplication<OutstagramApplication>(*args)
 }
-

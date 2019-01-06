@@ -1,7 +1,6 @@
 package com.conatuseus.outstagram.controller
 
 import com.conatuseus.outstagram.services.BojService
-import io.lettuce.core.RedisClient
 import io.lettuce.core.api.StatefulRedisConnection
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -26,8 +25,7 @@ class BojController(@Autowired val redisClient: StatefulRedisConnection<String,S
 
     @GetMapping("/reset")
     fun reset():String{
-        val redisClient=RedisClient.create("redis://localhost:6379").connect().sync()
-        redisClient.flushall()
+        redisClient.sync().flushall()
         return "success!"
     }
 }
