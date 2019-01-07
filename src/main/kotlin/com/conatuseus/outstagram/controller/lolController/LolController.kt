@@ -10,7 +10,7 @@ class LolController{
 
     @GetMapping("/lol/{user}")
     fun lolGetInfoOfUser(@PathVariable userId:String){
-//        val apiKey="RGAPI-55af9787-2fb8-4e57-9cb4-75b049751650"
+//        val apiKey="RGAPI-f6fca46d-169b-4677-899b-fe6c6de67f11"
 //        val url="https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/$userId?api_key=$apiKey"
     }
 }

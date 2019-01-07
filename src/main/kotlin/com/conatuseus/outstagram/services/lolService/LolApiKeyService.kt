@@ -1,8 +1,11 @@
 package com.conatuseus.outstagram.services.lolService
 
+import com.conatuseus.outstagram.model.lolModel.LolApiKey
 
 
-class LolApiKeyService(){
-    fun getApiKey()="RGAPI-55af9787-2fb8-4e57-9cb4-75b049751650"
+class LolApiKeyService(val newLolApiKey: String){
+    fun lolInsertApiKey(lolApiKey: String)=LolApiKey(lolApiKey)
 
+    fun lolGetApiKey():String=LolApiKey(newLolApiKey).toString()
+    
 }
