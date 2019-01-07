@@ -1,4 +1,4 @@
-package com.conatuseus.outstagram.services.lolService
+package com.conatuseus.outstagram.dataAccess
 
 import com.conatuseus.outstagram.model.lolModel.LolUserInfo
 
