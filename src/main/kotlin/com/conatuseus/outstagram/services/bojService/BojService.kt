@@ -1,4 +1,4 @@
-package com.conatuseus.outstagram.services
+package com.conatuseus.outstagram.services.bojService
 
 import io.lettuce.core.api.StatefulRedisConnection
 import org.jsoup.Connection

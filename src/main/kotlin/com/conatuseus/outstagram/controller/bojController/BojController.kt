@@ -1,6 +1,6 @@
-package com.conatuseus.outstagram.controller
+package com.conatuseus.outstagram.controller.bojController
 
-import com.conatuseus.outstagram.services.BojService
+import com.conatuseus.outstagram.services.bojService.BojService
 import io.lettuce.core.api.StatefulRedisConnection
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
