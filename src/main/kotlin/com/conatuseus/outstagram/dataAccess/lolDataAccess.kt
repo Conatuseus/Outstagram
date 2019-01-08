@@ -13,6 +13,8 @@ class lolDataAccess(val lolUserId:String,val lolApiKey:String):LolUserI{
                 .baseUrl("https://kr.api.riotgames.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
+        var isPossible=false
+        val TeacherHowToCoding= isPossible
     }
 
 
