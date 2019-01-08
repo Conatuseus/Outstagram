@@ -10,7 +10,7 @@ import retrofit2.http.Path
 
 interface LolApiINF {
 
-    @GET("/lol/{userId}")
+    @GET("/lol/{userId}/repos")
     fun lolGetRepos(@Path("userId") lolUserId:String):Call<LolUserInfo>
 
     @POST("lol/{userId}")
