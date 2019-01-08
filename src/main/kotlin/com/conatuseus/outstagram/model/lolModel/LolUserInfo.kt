@@ -4,4 +4,5 @@ data class LolUserInfo(val name:String,
                        val puuid:String,
                        val summonerLevel:Long,
                        val summonerId:String,
-                       val accountId:String)
+                       val accountId:String,
+                       val id:String)
