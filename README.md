@@ -18,6 +18,9 @@
 # 2018/1/5
 # Changing Structure of Boj
 
+# 2018/1/7
+# Starting development about finding record of Lol User
+
 
 # --미완성 --
 # I find ur betrayer
