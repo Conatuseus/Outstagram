@@ -2,6 +2,8 @@ package com.conatuseus.outstagram.services.lolService
 
 import com.conatuseus.outstagram.model.lolModel.LolUserInfo
 import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -17,8 +19,10 @@ class LolUserDAO(val lolUserId:String, val lolApiKey:String){
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-        val service= retrofit.create(LolUserInfo::class.java)
-        return  service  // <-이게 Call<LolUserInfo>
+        val service= retrofit.create(LolApiService::class.java)
+        val call=service.getUserInfo(lolUserId,lolApiKey)
+        return LolUserInfo(1,"a","a",1,2,"a","a")
+        //임시.
     }
 
 }
