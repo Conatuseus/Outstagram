@@ -11,14 +11,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 class LolUserDAO(val lolUserId:String, val lolApiKey:String){
     val baseURL="https://kr.api.riotgames.com/"
 
-    fun testRetrofit(): Call<LolUserInfo> {
+    fun testRetrofit(): LolUserInfo{
         val retrofit:Retrofit=Retrofit.Builder()
                 .baseUrl(baseURL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-        val service= retrofit.create(LolApiService::class.java)
-        return  service.getUserInfo(lolUserId,lolApiKey)
+        val service= retrofit.create(LolUserInfo::class.java)
+        return  service  // <-이게 Call<LolUserInfo>
     }
 
 }
