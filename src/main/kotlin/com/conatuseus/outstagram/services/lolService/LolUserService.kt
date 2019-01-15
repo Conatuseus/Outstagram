@@ -1,5 +1,6 @@
 package com.conatuseus.outstagram.services.lolService
 
-class LolUserService(){
+class LolUserService(val lolUserId:String,val lolApiKey:String){
+
 
 }
