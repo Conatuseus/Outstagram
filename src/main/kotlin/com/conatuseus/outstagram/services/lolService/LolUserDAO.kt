@@ -1,5 +1,6 @@
-package com.conatuseus.outstagram.dataAccess
+package com.conatuseus.outstagram.services.lolService
 
+import com.conatuseus.outstagram.model.lolModel.LolUserInfo
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -8,13 +9,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class LolUserDAO(val lolUserId:String, val lolApiKey:String){
     val baseURL="https://kr.api.riotgames.com/"
-    var lolSummonerURL="lol/summoner/v4/summoners/by-name/$lolUserId?api_key=$lolApiKey"
 
-    fun testRetrofit(){
+    fun testRetrofit(): LolUserInfo {
         val retrofit:Retrofit=Retrofit.Builder()
                 .baseUrl(baseURL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
+
+        val service:LolApiService=retrofit.create(LolApiService::class.java)
 
     }
 
