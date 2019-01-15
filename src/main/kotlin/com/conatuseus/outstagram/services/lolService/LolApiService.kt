@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface LolApiService{
 
-    @GET("lol/summoner/v4/summoners/by-name/{lolUserId}?api_key={lolApiKey}")
-    fun getUserInfo(@Query("lolUserId") lolUserId:String, @Query("lolApiKey") lolApiKey:String):Call<LolUserInfo>
+    @GET("lol/summoner/v4/summoners/by-name/{lolUserId}?api_key=lolApiKey")
+    fun getUserInfo(@Path("lolUserId") lolUserId:String, @Query("lolApiKey") lolApiKey:String):Call<LolUserInfo>
 
 }
