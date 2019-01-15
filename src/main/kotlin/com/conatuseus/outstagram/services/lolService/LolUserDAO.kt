@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 //var lolAddress="https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/$lolUserId?api_key=$lolApiKey"
-
+// https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/명슨?api_key=RGAPI-3c86f2bb-a4ee-44e6-9f4e-b138b147489c
 class LolUserDAO(val lolUserId:String, val lolApiKey:String){
     val baseURL="https://kr.api.riotgames.com/"
 
