@@ -10,6 +10,6 @@ interface LolApiService{
 
     @GET("lol/summoner/v4/summoners/by-name/{lolUserId}?api_key={lolApiKey}")
     fun getUserInfo(@Path("lolUserId") lolUserId:String,
-                    @Path("lolApiKey") lolApiKey:String):Call<LolUserInfo>
+                    @Query("lolApiKey") lolApiKey:String):Call<LolUserInfo>
 
 }
