@@ -1,10 +1,12 @@
 package com.conatuseus.outstagram.model.lolModel
 
-data class LolUserInfo(val profileIconId:Int,
-                       val name:String,
-                       val puuid:String,
-                       val summonerLevel:Long,
-                       val revisionDate:Long,
-                       val id:String,
-                       val accountId:String
+import com.google.gson.annotations.SerializedName
+
+data class LolUserInfo(@SerializedName("profileIconId") val profileIconId:Int,
+                       @SerializedName("name") val name:String,
+                       @SerializedName("puuid") val puuid:String,
+                       @SerializedName("summonerLevel")val summonerLevel:Long,
+                       @SerializedName("revisionDate") val revisionDate:Long,
+                       @SerializedName("id") val id:String,
+                       @SerializedName("accountId") val accountId:String
                        )
