@@ -4,7 +4,9 @@ import com.conatuseus.outstagram.model.lolModel.LolUserInfo
 import retrofit2.Call
 
 
-class LolUserService(val lolUserId:String,val lolApiKey:String){
+class LolUserService(private val lolUserDAO: LolUserDAO){
 
-    fun lolUserInfoService(): LolUserInfo=LolUserDAO(lolUserId,lolApiKey).testRetrofit()
+    fun lolUserInfoService(lolUserId: String): String {
+        return lolUserDAO.getUserInfo(lolUserId).toString()
+    }
 }
