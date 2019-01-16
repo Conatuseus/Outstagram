@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class LolConfiguration {
-    @Bean
-    fun lolController() = LolController(lolApiService())
 
     @Bean
     fun lolApiService() = LolUserService(lolUserDAO())
