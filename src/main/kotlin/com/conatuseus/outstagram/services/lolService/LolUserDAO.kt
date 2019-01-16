@@ -52,8 +52,9 @@ class LolUserDAO(val lolUserId:String, val lolApiKey:String){
             }
 
         }
-        return LolUserInfo(1,"a","a",1,2,"a","a")
+        //return LolUserInfo(1,"a","a",1,2,"a","a")
         //임시.
+        return request.execute().body()!!
     }
 
 }
