@@ -18,4 +18,8 @@ interface LolApiService{
     fun getUserMatches(@Path("encryptedAccountId") lolUserAccountId:String,
                        @Query("api_key") lolApiKey: String):Call<LolMatch>
 
+    @GET("lol/spectator/v4/active-games/by-summoner/{encryptedSummonerId}")
+    fun getUserSpectator(@Path("encryptedSummonerId") encryptedSummonerId:String,
+                       @Query("api_key") lolApiKey: String)
+
 }
