@@ -13,18 +13,13 @@ import org.springframework.web.bind.annotation.RestController
 class LolController(private val lolUserService: LolUserService){
 
     @GetMapping("/lol/{userName}")
-    fun lolGetSummoner(@PathVariable userName:String):LolSummoner{
-        return lolUserService.lolGetSummonerService(userName)
-    }
+    fun lolGetSummoner(@PathVariable userName:String):LolSummoner=lolUserService.lolGetSummonerService(userName)
+
 
     @GetMapping("/lol/{userName}/matches")
-    fun lolGetMatches(@PathVariable userName: String):LolMatch{
-        return lolUserService.lolGetMatchesService(lolGetSummoner(userName).accountId)
-    }
+    fun lolGetMatches(@PathVariable userName: String):LolMatch=lolUserService.lolGetMatchesService(lolGetSummoner(userName).accountId)
+
 
     @GetMapping("/lol/{userName}/spectator")
-    fun lolGetSpectator(@PathVariable userName: String):LolSpectator{
-        return lolUserService.lolSpectatorService(lolGetSummoner(userName).id)
-    }
-
+    fun lolGetSpectator(@PathVariable userName: String):LolSpectator=lolUserService.lolSpectatorService(lolGetSummoner(userName).id)
 }
