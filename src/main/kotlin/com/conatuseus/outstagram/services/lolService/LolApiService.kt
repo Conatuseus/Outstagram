@@ -15,6 +15,7 @@ interface LolApiService{
 
 
     @GET("lol/match/v4/matchlists/by-account/{encryptedAccountId}")
-    fun getUserMatches(@Path("encryptedAccountId") lolUserAccountId:String):Call<List<LolMatch>>
+    fun getUserMatches(@Path("encryptedAccountId") lolUserAccountId:String,
+                       @Query("api_key") lolApiKey: String):Call<LolMatch>
 
 }
