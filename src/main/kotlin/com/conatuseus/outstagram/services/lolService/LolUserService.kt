@@ -1,6 +1,7 @@
 package com.conatuseus.outstagram.services.lolService
 
 import com.conatuseus.outstagram.model.lolModel.LolMatch
+import com.conatuseus.outstagram.model.lolModel.LolSpectator
 import com.conatuseus.outstagram.model.lolModel.LolSummoner
 
 class LolUserService(private val lolUserDAO: LolUserDAO){
@@ -10,5 +11,9 @@ class LolUserService(private val lolUserDAO: LolUserDAO){
     }
     fun lolGetMatchesService(lolUserName: String):LolMatch{
         return lolUserDAO.getLolMatches(lolUserName)
+    }
+
+    fun lolSpectatorService(lolUserName: String):LolSpectator{
+        return lolUserDAO.getSpectator(lolUserName)
     }
 }

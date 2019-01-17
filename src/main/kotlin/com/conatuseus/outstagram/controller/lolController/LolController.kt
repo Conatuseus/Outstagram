@@ -1,6 +1,7 @@
 package com.conatuseus.outstagram.controller.lolController
 
 import com.conatuseus.outstagram.model.lolModel.LolMatch
+import com.conatuseus.outstagram.model.lolModel.LolSpectator
 import com.conatuseus.outstagram.model.lolModel.LolSummoner
 import com.conatuseus.outstagram.services.lolService.LolUserService
 import org.springframework.web.bind.annotation.GetMapping
@@ -23,5 +24,9 @@ class LolController(private val lolUserService: LolUserService){
         return lolUserService.lolGetMatchesService(lolGetSummoner(userName).accountId)
     }
 
+    @GetMapping("/lol/{userName}/spectator")
+    fun lolGetSpectator(@PathVariable userName: String):LolSpectator{
+        return lolUserService.lolSpectatorService(lolGetSummoner(userName).id)
+    }
 
 }
