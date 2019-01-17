@@ -1,12 +1,8 @@
 package com.conatuseus.outstagram.services.lolService
 
-import com.conatuseus.outstagram.model.lolModel.LolUserInfo
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.conatuseus.outstagram.model.lolModel.LolSummoner
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
 
 
 //var lolAddress="https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/$lolUserId?api_key=$lolApiKey"
@@ -19,7 +15,7 @@ class LolUserDAO(private val lolApiKey:String){
             .build()
             .create(LolApiService::class.java)
 
-    fun getUserInfo(lolUserId:String): LolUserInfo{
+    fun getUserInfo(lolUserId:String): LolSummoner{
         val response = retrofit.getUserInfo(lolUserId, lolApiKey).execute()
         return response.body()!!
     }

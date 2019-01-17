@@ -2,7 +2,7 @@ package com.conatuseus.outstagram.model.lolModel
 
 import com.google.gson.annotations.SerializedName
 
-data class LolUserInfo(@SerializedName("profileIconId") val profileIconId:Int,
+data class LolSummoner(@SerializedName("profileIconId") val profileIconId:Int,
                        @SerializedName("name") val name:String,
                        @SerializedName("puuid") val puuid:String,
                        @SerializedName("summonerLevel")val summonerLevel:Long,

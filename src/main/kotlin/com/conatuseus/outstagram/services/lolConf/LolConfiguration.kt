@@ -20,4 +20,5 @@ class LolConfiguration {
     @Bean
     fun lolApiKeyService() = LolApiKeyService("RGAPI-1187bfb8-2dca-446f-a65d-4b5965869f24")
 
+
 }
