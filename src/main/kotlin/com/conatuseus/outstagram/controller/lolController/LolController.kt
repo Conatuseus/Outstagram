@@ -14,8 +14,6 @@ class LolController(private val lolUserService: LolUserService){
 
     @GetMapping("/lol/{userName}")
     fun lolGetSummoner(@PathVariable userName:String):LolSummoner{
-//        val apiKey="RGAPI-f6fca46d-169b-4677-899b-fe6c6de67f11"
-//        val url="https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/$userId?api_key=$apiKey"
         return lolUserService.lolGetSummonerService(userName)
     }
 
