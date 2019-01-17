@@ -1,5 +1,6 @@
 package com.conatuseus.outstagram.services.lolService
 
+import com.conatuseus.outstagram.model.lolModel.LolMatch
 import com.conatuseus.outstagram.model.lolModel.LolSummoner
 import retrofit2.Call
 import retrofit2.http.GET
@@ -14,6 +15,6 @@ interface LolApiService{
 
 
     @GET("lol/match/v4/matchlists/by-account/{encryptedAccountId}")
-    fun getUserMatches(@Path("encryptedAccountId") lolUserAccountId:String):Call<List<>>
+    fun getUserMatches(@Path("encryptedAccountId") lolUserAccountId:String):Call<List<LolMatch>>
 
 }
