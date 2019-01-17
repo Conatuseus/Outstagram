@@ -21,7 +21,8 @@ class LolUserDAO(private val lolApiKey:String){
 
     fun getUserInfo(lolUserId:String): LolUserInfo{
         val response = retrofit.getUserInfo(lolUserId, lolApiKey).execute()
-
         return response.body()!!
     }
+
+
 }
