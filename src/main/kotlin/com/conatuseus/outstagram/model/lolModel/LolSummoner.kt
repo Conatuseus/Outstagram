@@ -10,4 +10,12 @@ data class LolSummoner(@SerializedName("profileIconId") val profileIconId:Int,
                        @SerializedName("summonerLevel")val summonerLevel:Long,
                        @SerializedName("id") val id:String,
                        @SerializedName("accountId") val accountId:String
-                       )
+                       ){
+    override fun toString():String{
+        return "닉네임 : $name\n" +
+                "Level : $summonerLevel" +
+                "puuid : $puuid" +
+                "SummonerId : $id" +
+                "AccountId : $accountId"
+    }
+}
