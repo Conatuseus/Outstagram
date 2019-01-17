@@ -1,6 +1,7 @@
 package com.conatuseus.outstagram.services.lolService
 
 import com.conatuseus.outstagram.model.lolModel.LolMatch
+import com.conatuseus.outstagram.model.lolModel.LolSpectator
 import com.conatuseus.outstagram.model.lolModel.LolSummoner
 import retrofit2.Call
 import retrofit2.http.GET
@@ -20,6 +21,6 @@ interface LolApiService{
 
     @GET("lol/spectator/v4/active-games/by-summoner/{encryptedSummonerId}")
     fun getUserSpectator(@Path("encryptedSummonerId") encryptedSummonerId:String,
-                       @Query("api_key") lolApiKey: String)
+                       @Query("api_key") lolApiKey: String):Call<LolSpectator>
 
 }
