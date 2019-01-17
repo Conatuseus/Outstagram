@@ -1,5 +1,6 @@
 package com.conatuseus.outstagram.services.lolService
 
+import com.conatuseus.outstagram.model.lolModel.LolMatch
 import com.conatuseus.outstagram.model.lolModel.LolSummoner
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,10 +16,14 @@ class LolUserDAO(private val lolApiKey:String){
             .build()
             .create(LolApiService::class.java)
 
-    fun getUserInfo(lolUserId:String): LolSummoner{
-        val response = retrofit.getUserInfo(lolUserId, lolApiKey).execute()
+    fun getLolSummoner(lolUserName:String): LolSummoner{
+        val response = retrofit.getUserInfo(lolUserName, lolApiKey).execute()
         return response.body()!!
     }
 
+    fun getLolMatches(lolAccountId:String):LolMatch{
+        val response=retrofit.getUserMatches(lolAccountId,lolApiKey).execute()
+        return response.body()!!
+    }
 
 }
