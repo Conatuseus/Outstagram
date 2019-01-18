@@ -11,6 +11,6 @@ class LolView{
 
     @Override
     fun addResourceHandlers(registry:ResourceHandlerRegistry){
-        registry.addResourceHandler("/lolHTML.html").addResourceLocations("lolHTML.html")
+        registry.addResourceHandler("/LolHTML.html").addResourceLocations("LolHTML.html")
     }
 }
