@@ -21,7 +21,7 @@ class LolUserService(private val lolUserDAO: LolUserDAO){
         val match:LolMatch=lolUserDAO.getLolMatches(user.accountId)
         var ret="Name : ${user.name} Level : ${user.summonerLevel} Tier : {Not yet} "
         for(game in match.matches){
-            ret+="Champion : ${game.champion} Lane :  ${game.lane} Season : ${game.season}                                                                                     "
+            ret+="Champion : ${game.champion} Lane :  ${game.lane} Season : ${game.season} "
         }
         return ret
     }
