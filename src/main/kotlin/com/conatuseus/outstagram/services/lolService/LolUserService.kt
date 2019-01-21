@@ -16,4 +16,10 @@ class LolUserService(private val lolUserDAO: LolUserDAO){
     fun lolSpectatorService(lolUserName: String):LolSpectator{
         return lolUserDAO.getSpectator(lolUserName)
     }
+    fun lolSummonerInfoService(lolUserName:String):String{
+        val user:LolSummoner=lolUserDAO.getLolSummoner(lolUserName)
+        val match:LolMatch=lolUserDAO.getLolMatches(lolUserName)
+        var ret="소환사명: ${user.name} 레벨: ${user.summonerLevel} 티어:"
+        return ret
+    }
 }

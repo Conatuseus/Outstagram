@@ -18,7 +18,7 @@ class LolConfiguration {
     fun lolUserDAO() = LolUserDAO(lolApiKeyService().lolApiKey)
 
     @Bean
-    fun lolApiKeyService() = LolApiKeyService("RGAPI-1187bfb8-2dca-446f-a65d-4b5965869f24")
+    fun lolApiKeyService() = LolApiKeyService("RGAPI-42f04202-e8e4-4790-8fd0-93394fe6b868")
 
 
 }

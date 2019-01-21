@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class LolController(private val lolUserService: LolUserService){
 
-    @GetMapping("/lol/{userName}")
+    @GetMapping("/lol/{userName}/summoner")
     fun lolGetSummoner(@PathVariable userName:String):LolSummoner=lolUserService.lolGetSummonerService(userName)
 
     @GetMapping("/lol/{userName}/matches")
@@ -20,4 +20,7 @@ class LolController(private val lolUserService: LolUserService){
 
     @GetMapping("/lol/{userName}/spectator")
     fun lolGetSpectator(@PathVariable userName: String):LolSpectator=lolUserService.lolSpectatorService(lolGetSummoner(userName).id)
+
+    @GetMapping("/lol/find/{userName}")
+    fun lolGetUseInfo(@PathVariable userName: String):String=lolUserService.lolSummonerInfoService(userName)
 }
