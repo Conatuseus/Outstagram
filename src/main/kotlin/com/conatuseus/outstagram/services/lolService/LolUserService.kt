@@ -19,9 +19,9 @@ class LolUserService(private val lolUserDAO: LolUserDAO){
     fun lolSummonerInfoService(lolUserName:String):String{
         val user:LolSummoner=lolUserDAO.getLolSummoner(lolUserName)
         val match:LolMatch=lolUserDAO.getLolMatches(user.accountId)
-        var ret="Name : ${user.name}\n Level : ${user.summonerLevel} Tier : {Not yet} "
+        var ret="Name : ${user.name} Level : ${user.summonerLevel} Tier : {Not yet} "
         for(game in match.matches){
-            ret+="Champion : ${game.champion} Lane :  ${game.lane} Season : ${game.season}"
+            ret+="Champion : ${game.champion} Lane :  ${game.lane} Season : ${game.season}                                                                                     "
         }
         return ret
     }
