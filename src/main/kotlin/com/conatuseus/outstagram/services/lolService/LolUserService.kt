@@ -18,8 +18,7 @@ class LolUserService(private val lolUserDAO: LolUserDAO){
     }
     fun lolSummonerInfoService(lolUserName:String):String{
         val user:LolSummoner=lolUserDAO.getLolSummoner(lolUserName)
-        val match:LolMatch=lolUserDAO.getLolMatches(lolUserName)
-//        return "소환사명: ${user.name} 레벨: ${user.summonerLevel} 티어:"
-        return "?"
+        val match:LolMatch=lolUserDAO.getLolMatches(user.accountId)
+        return "소환사명: ${user.name} 레벨: ${user.summonerLevel} 티어:"
     }
 }
