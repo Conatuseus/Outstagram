@@ -16,6 +16,7 @@ class LolUserService(private val lolUserDAO: LolUserDAO){
     fun lolSpectatorService(lolUserName: String):LolSpectator{
         return lolUserDAO.getSpectator(lolUserName)
     }
+
     fun lolSummonerInfoService(lolUserName:String):String{
         val user:LolSummoner=lolUserDAO.getLolSummoner(lolUserName)
         val match:LolMatch=lolUserDAO.getLolMatches(user.accountId)
