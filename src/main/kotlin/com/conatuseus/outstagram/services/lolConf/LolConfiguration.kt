@@ -1,6 +1,5 @@
 package com.conatuseus.outstagram.services.lolConf
 
-import com.conatuseus.outstagram.controller.lolController.LolController
 import com.conatuseus.outstagram.services.lolService.LolApiKeyService
 import com.conatuseus.outstagram.services.lolService.LolUserDAO
 import com.conatuseus.outstagram.services.lolService.LolUserService
@@ -18,7 +17,6 @@ class LolConfiguration {
     fun lolUserDAO() = LolUserDAO(lolApiKeyService().lolApiKey)
 
     @Bean
-    fun lolApiKeyService() = LolApiKeyService("RGAPI-c6c2959a-786f-4d75-844a-b7bca924422c")
-
+    fun lolApiKeyService() = LolApiKeyService("RGAPI-82a42335-93ff-4ea2-b495-d6c77da25861")
 
 }
