@@ -8,5 +8,8 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class BojConfiguration{
     @Bean
-    fun redis()= RedisClient.create("redis://localhost:6379").connect()
+    fun redisForUser()= RedisClient.create("redis://localhost:6379").connect()
+
+    @Bean
+    fun redisForFriendList()=RedisClient.create("redis://localhost:6380").connect()
 }
