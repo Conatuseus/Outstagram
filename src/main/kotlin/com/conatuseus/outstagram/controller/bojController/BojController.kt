@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
-class BojController(@Autowired val redisForUser: StatefulRedisConnection<String,String>,
-                    @Autowired val redisForFriendList: StatefulRedisConnection<String,String>,
+class BojController(@Autowired val redisForUser:StatefulRedisConnection<String,String>,
+                    @Autowired val redisForFriendList:StatefulRedisConnection<String,String>,
                     @Autowired val bojService: BojService){
 
     @GetMapping("/BOJ/add/{userId}")
@@ -22,7 +22,7 @@ class BojController(@Autowired val redisForUser: StatefulRedisConnection<String,
 
     @GetMapping("/BOJ/{userId}")
     fun getSolvedNumber(@PathVariable userId:String):String{
-        return bojService.getSolvedNumberService(userId)
+        return bojService.addUserInRedis(userId)
     }
 
     @GetMapping("/reset")

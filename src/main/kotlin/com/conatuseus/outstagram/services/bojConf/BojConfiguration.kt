@@ -14,7 +14,4 @@ class BojConfiguration{
     @Bean
     fun redisForFriendList()=RedisClient.create("redis://localhost:6380").connect()
 
-    @Bean
-    fun bojService()=BojService(redisForUser(),redisForFriendList())
-
 }
