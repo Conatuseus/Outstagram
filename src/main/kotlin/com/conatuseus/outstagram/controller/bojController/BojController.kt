@@ -27,7 +27,6 @@ class BojController(@Autowired val redis:StatefulRedisConnection<String,String>,
     @GetMapping("/reset")
     fun reset():String{
         redis.sync().flushall()
-        redis.sync().flushall()
         return "success!"
     }
 }
