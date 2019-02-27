@@ -19,7 +19,7 @@ class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
 
     fun addUserInRedis(userId:String):String{
         if(redis.sync().get(userId)!=null)
-            return redis.sync().get(userId).toString()+"  this is test"
+            return redis.sync().get(userId).toString()
 
         val sc = SSLContext.getInstance("SSL")
         sc.init(null, null, java.security.SecureRandom())
@@ -31,6 +31,7 @@ class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
         val htmlDocument=response.parse()
         val getSolvedNumber=htmlDocument.select("#statics > tbody > tr:nth-child(2) > td > a").text()
         redis.sync().set(userId,getSolvedNumber)
+        redis.sync().hset(userId,userId,userId)
         return getSolvedNumber
     }
 
