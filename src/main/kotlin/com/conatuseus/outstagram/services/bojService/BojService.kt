@@ -12,15 +12,14 @@ import javax.net.ssl.SSLContext
 @Service("bojService")
 class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
 
-
     fun addUserService(userId:String,friendId:String):String{
-        redis.sync().lpush(userId,friendId)
+        redis.sync().lpush(userId, friendId)
         return "Success"
     }
 
     fun addUserInRedis(userId:String):String{
         if(redis.sync().get(userId)!=null)
-            return redis.sync().get(userId).toString()
+            return redis.sync().get(userId).toString()+"  this is test"
 
         val sc = SSLContext.getInstance("SSL")
         sc.init(null, null, java.security.SecureRandom())
