@@ -31,7 +31,6 @@ class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
         val htmlDocument=response.parse()
         val getSolvedNumber=htmlDocument.select("#statics > tbody > tr:nth-child(2) > td > a").text()
         redis.sync().set(userId,getSolvedNumber)
-        redis.sync().hset(userId,userId,userId)
         return getSolvedNumber
     }
 
