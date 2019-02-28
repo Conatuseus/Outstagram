@@ -11,6 +11,6 @@ class BojConfiguration{
     fun redis()=RedisClient.create("redis://localhost:6379").connect()
 
     @Bean
-    fun redisForFriends()=RedisClient.create("redis://localhost:6379").connect()
+    fun redisForFriends()=RedisClient.create("redis://localhost:6380").connect()
 
 }
