@@ -10,10 +10,10 @@ import javax.net.ssl.HttpsURLConnection
 import javax.net.ssl.SSLContext
 
 @Service("bojService")
-class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
+class BojService(@Autowired val redis: StatefulRedisConnection<String,String>,@Autowired val redisForFriends:StatefulRedisConnection<String,String>){
 
     fun addUserService(userId:String,friendId:String):String{
-        redis.sync().lpush(userId, friendId)
+        redisForFriends.sync().lpush(userId, friendId)
         return "Success"
     }
 
@@ -41,7 +41,7 @@ class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
 
         val st=StringBuilder("")
         val userRedis=redis.sync()
-        val friend=redis.sync().lrange(userId,0,-1)
+        val friend=redisForFriends.sync().lrange(userId,0,-1)
 
         val friendsList=Array(friend.size+1){
             if(it!=friend.size)
