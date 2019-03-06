@@ -45,7 +45,7 @@ class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
     fun getListService(userId: String):String{
         val friends=redis.sync().smembers("$FRIEND_LIST_KEY_PREFIX$userId")
         val friendList= mutableListOf<Pair<String,Int>>()
-        friends.forEach { friendList.add(Pair(it,redis.sync().get("$SOLVED_NUM_KEY_PREFIX$userId").toInt())) }
+        friends.forEach { friendList.add(Pair(it,redis.sync().get("$SOLVED_NUM_KEY_PREFIX$it").toInt())) }
         friendList.sortWith(kotlin.Comparator { o1, o2 -> o1.second.compareTo(o2.second) })
         return friendList.toList().joinToString { "," }
     }
