@@ -21,7 +21,7 @@ class BojController(@Autowired val redis:StatefulRedisConnection<String,String>,
 
     @GetMapping("/BOJ/{userId}")
     fun getSolvedNumber(@PathVariable userId:String):String{
-        return bojService.addUserInRedis(userId)
+        return bojService.getSolvedNumber(userId)
     }
 
     @GetMapping("/reset")
