@@ -49,10 +49,10 @@ class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
         val friendList= mutableListOf<Pair<String,Int>>()
         friends.forEach { friendList.add(Pair(it, getSolvedNumber(it).toInt())) }
         friendList.sortWith(kotlin.Comparator { o1, o2 -> o1.second.compareTo(o2.second) })
-        val st=StringBuilder("[ ")
-        friendList.forEach { st.append("${it.first}: ${it.second}    ") }
-        st.append("  ]")
-        return st.toString()
+        var res="[  "
+        friendList.forEach { res+="${it.first}: ${it.second}  " }
+        res+="   ]"
+        return res
     }
 
 
