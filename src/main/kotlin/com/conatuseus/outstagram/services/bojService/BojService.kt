@@ -38,17 +38,18 @@ class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
         val htmlDocument=response.parse()
         val getSolvedNumber=htmlDocument.select("#statics > tbody > tr:nth-child(2) > td > a").text()
         redis.sync().set("$SOLVED_NUM_KEY_PREFIX$userId",getSolvedNumber)
-        redis.sync().sadd("$FRIEND_LIST_KEY_PREFIX$userId",userId)
         return getSolvedNumber
     }
 
     fun getListService(userId: String):String{
+        redis.sync().sadd("$FRIEND_LIST_KEY_PREFIX$userId",userId)
+        if(redis.sync().smembers("$FRIEND_LIST_KEY_PREFIX$userId").size<=1)
+            return "Not Friends"
         val friends=redis.sync().smembers("$FRIEND_LIST_KEY_PREFIX$userId")
         val friendList= mutableListOf<Pair<String,Int>>()
-//        friends.forEach { friendList.add(Pair(it,redis.sync().get("$SOLVED_NUM_KEY_PREFIX$it").toInt())) }
-//        friendList.sortWith(kotlin.Comparator { o1, o2 -> o1.second.compareTo(o2.second) })
-//        return friendList.toList().joinToString { "," }
-        return friends.toString()
+        friends.forEach { friendList.add(Pair(it,redis.sync().get("$SOLVED_NUM_KEY_PREFIX$it").toInt())) }
+        friendList.sortWith(kotlin.Comparator { o1, o2 -> o1.second.compareTo(o2.second) })
+        return friendList.toList().joinToString { "," }
     }
 
 }
