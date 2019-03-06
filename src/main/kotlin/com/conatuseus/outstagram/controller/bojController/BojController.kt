@@ -10,8 +10,8 @@ class BojController(@Autowired val redis:StatefulRedisConnection<String,String>,
                     @Autowired private val bojService: BojService){
 
     @GetMapping("/BOJ/add/{userId}")
-    fun addUser(@PathVariable userId:String,@RequestParam addId:String):String{
-        return bojService.addUserService(userId,addId)
+    fun addFriend(@PathVariable userId:String,@RequestParam addId:String):String{
+        return bojService.addFriendService(userId,addId)
     }
 
     @GetMapping("/BOJ/list/{userId}")

@@ -14,8 +14,12 @@ const val SOLVED_NUM_KEY_PREFIX="solvedNum::"
 
 @Service("bojService")
 class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
-    fun addUserService(userId:String,friendId:String):String{
-        redis.sync().lpush("$FRIEND_LIST_KEY_PREFIX$userId", friendId)
+
+    fun addFriendService(userId:String,friendId:String):String{
+        if(redis.sync().sismember("$FRIEND_LIST_KEY_PREFIX$userId",friendId)){
+            return "Already exist"
+        }
+        redis.sync().sadd("$FRIEND_LIST_KEY_PREFIX$userId", friendId)
         return "Success"
     }
 
@@ -37,25 +41,8 @@ class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
     }
 
     fun getListService(userId: String):String{
-        class Pair(val id:String,val solvedNum:Int):Comparable<Pair>{
-            override fun compareTo(other: Pair)=this.solvedNum-other.solvedNum
-        }
 
-        val st=StringBuilder("")
-        val userRedis=redis.sync()
-        val friend=redis.sync().lrange(userId,0,-1)
-
-        val friendsList=Array(friend.size+1){
-            if(it!=friend.size)
-                if(userRedis.get(friend[it])!=null) Pair(friend[it],userRedis.get(friend[it]).toInt())
-                else {
-                    Pair(friend[it],addUserInRedis(userRedis.get(friend[it])).toInt())
-                }
-            else Pair(userId,userRedis.get(userId).toInt())
-        }
-        friendsList.sort()
-        friendsList.forEach { st.append("${it.id} : ${it.solvedNum},") }
-        return st.toString()
+        return "Incomplete"
     }
 
 }
