@@ -9,17 +9,19 @@ import java.lang.StringBuilder
 import javax.net.ssl.HttpsURLConnection
 import javax.net.ssl.SSLContext
 
-@Service("bojService")
-class BojService(@Autowired val redis: StatefulRedisConnection<String,String>,@Autowired val redisForFriends:StatefulRedisConnection<String,String>){
+const val FRIEND_LIST_KEY_PREFIX="friendList::"
+const val SOLVED_NUM_KEY_PREFIX="solvedNum::"
 
+@Service("bojService")
+class BojService(@Autowired val redis: StatefulRedisConnection<String,String>){
     fun addUserService(userId:String,friendId:String):String{
-        redisForFriends.sync().lpush(userId, friendId)
+        redis.sync().lpush("$FRIEND_LIST_KEY_PREFIX$userId", friendId)
         return "Success"
     }
 
     fun addUserInRedis(userId:String):String{
-        if(redis.sync().get(userId)!=null)
-            return redis.sync().get(userId).toString()
+        if(redis.sync().get("$SOLVED_NUM_KEY_PREFIX$userId")!=null)
+            return redis.sync().get("$SOLVED_NUM_KEY_PREFIX$userId").toString()
 
         val sc = SSLContext.getInstance("SSL")
         sc.init(null, null, java.security.SecureRandom())
@@ -30,7 +32,7 @@ class BojService(@Autowired val redis: StatefulRedisConnection<String,String>,@A
                 .execute()
         val htmlDocument=response.parse()
         val getSolvedNumber=htmlDocument.select("#statics > tbody > tr:nth-child(2) > td > a").text()
-        redis.sync().set(userId,getSolvedNumber)
+        redis.sync().set("$SOLVED_NUM_KEY_PREFIX$userId",getSolvedNumber)
         return getSolvedNumber
     }
 
@@ -41,7 +43,7 @@ class BojService(@Autowired val redis: StatefulRedisConnection<String,String>,@A
 
         val st=StringBuilder("")
         val userRedis=redis.sync()
-        val friend=redisForFriends.sync().lrange(userId,0,-1)
+        val friend=redis.sync().lrange(userId,0,-1)
 
         val friendsList=Array(friend.size+1){
             if(it!=friend.size)
