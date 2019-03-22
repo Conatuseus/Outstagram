@@ -37,7 +37,6 @@ class BojService(@Autowired val redis: StatefulRedisConnection<String,String>) {
             redis.sync().sadd(USER_LIST_KEY,userId)
         }
 
-
         val sc = SSLContext.getInstance("SSL")
         sc.init(null, null, java.security.SecureRandom())
         HttpsURLConnection.setDefaultSSLSocketFactory(sc.socketFactory)
