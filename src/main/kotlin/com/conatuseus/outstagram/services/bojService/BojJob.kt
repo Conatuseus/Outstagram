@@ -10,7 +10,7 @@ import javax.net.ssl.SSLContext
 
 class BojJob(val redis:StatefulRedisConnection<String,String>){
 
-    @Scheduled(cron = "* /1 * * * ?")
+    @Scheduled(cron = "* /1 * * * *")
     fun solvedNumJob(){
         val list=redis.sync().smembers(USER_LIST_KEY)
         val sc = SSLContext.getInstance("SSL")
