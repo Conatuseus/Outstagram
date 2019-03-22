@@ -22,7 +22,7 @@
 
 <br><br> 2019/3/22
 <br> Add Job Scheduler Cron
-<br>
+<br> run Every day at 12 <br>
 
 # --미완성 --
 <br> I find ur betrayer
