@@ -4,13 +4,14 @@ import io.lettuce.core.api.StatefulRedisConnection
 import org.jsoup.Connection
 import org.jsoup.Jsoup
 import org.springframework.scheduling.annotation.Scheduled
+import org.springframework.stereotype.Service
 import javax.net.ssl.HttpsURLConnection
 import javax.net.ssl.SSLContext
 
-
+@Service
 class BojJob(val redis:StatefulRedisConnection<String,String>){
 
-    @Scheduled(cron = "* /1 * * * *")
+    @Scheduled(cron = "* 0/1 * * * *")
     fun solvedNumJob(){
         val list=redis.sync().smembers(USER_LIST_KEY)
         val sc = SSLContext.getInstance("SSL")
