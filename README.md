@@ -21,7 +21,7 @@
 <br> Starting development about finding record of Lol User
 
 <br><br> 2019/3/22
-<br> Add Job Scheduler Cron
+<br> Add Job Scheduler Cron in BOJ
 <br> run Every day at 12 <br>
 
 # --미완성 --
